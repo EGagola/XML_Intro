@@ -25,7 +25,7 @@ class GuiseppesMenu
   def evaluate_calories max_calories
     calories_array = @menu.xpath('//calories')
     names_array = @menu.search('name')
-    non_full_english_dishes = 0
+    non_full_breakfast_dishes = 0
     low_calorie_dishes = 0
     text_val_array = []
     calories_array.each do |value|
@@ -34,13 +34,13 @@ class GuiseppesMenu
     for i in 0 ... text_val_array.length do
       if names_array[i].text == "Full Breakfast"
       else
-        non_full_english_dishes += 1
+        non_full_breakfast_dishes += 1
         if text_val_array[i] <= max_calories
           low_calorie_dishes += 1
         end
       end
     end
-    if low_calorie_dishes == non_full_english_dishes
+    if low_calorie_dishes == non_full_breakfast_dishes
       true
     end
   end
